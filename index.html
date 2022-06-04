@@ -1,76 +1,99 @@
 <html>
+    <head>
+        <meta http-equiv="Content-Language" content="en-us">
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link rel=stylesheet href=style.css>
+        <title>A website anyone can edit!</title>
+        <script>
+			// FrontPage images
+            function FP_swapImg() { //v1.0
+                var doc = document,
+                    args = arguments,
+                    elm, n;
+                doc.$imgSwaps = new Array();
+                for (n = 2; n < args.length; n += 2) {
+                    elm = FP_getObjectByID(args[n]);
+                    if (elm) {
+                        doc.$imgSwaps[doc.$imgSwaps.length] = elm;
+                        elm.$src = elm.src;
+                        elm.src = args[n + 1];
+                    }
+                }
+            }
 
-<head>
-<meta http-equiv="Content-Language" content="en-us">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<link rel=stylesheet href=style.css>
-
-<title>A website anyone can edit!</title>
-
-<script>
-function FP_swapImg() {//v1.0
- var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
- n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
- elm.$src=elm.src; elm.src=args[n+1]; } }
-}
-
-function FP_getObjectByID(id,o) {//v1.0
- var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
- else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
- if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
- for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
- f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
- for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
- return null;
-}
-
-
-</script>
-
-</head>
-
-<body>
-
-<img class=sitetitle src=img/pubsite.gif alt=PubSite>
-<h1>A website anyone can edit!</h1>
-<p>Check out the available pages:</p>
-<a href=pages/whath>
-<img id="img1" src="button/whath1.jpg" height="20" width="100" alt="WHAT H" fp-style="fp-btn: Embossed Rectangle 2" fp-title="WHAT H" onmouseover="FP_swapImg(1,0,/*id*/'img1',/*url*/'button/whath2.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img1',/*url*/'button/whath1.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img1',/*url*/'button/whath3.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img1',/*url*/'button/whath2.jpg')"></a>
-<a href="pages/idk">
-<img border="0" id="img2" src="button/idk3.jpg" height="20" width="100" alt="idk" fp-style="fp-btn: Soft Rectangle 2" fp-title="idk" onmouseover="FP_swapImg(1,0,/*id*/'img2',/*url*/'button/idk1.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img2',/*url*/'button/idk3.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img2',/*url*/'button/idk2.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img2',/*url*/'button/idk1.jpg')"></a><br><br>
-<a class=githublink href="https://github.com/HIDEN64/PubSite">GitHub repo</a>
-
-<hr>
-<p>cool people:</p>
-<a href="https://hiden.pw/">HIDEN64</a>, <a href="http://www.nick99nack.com/">nick99nack</a>, <a href="http://local.toxi.pw/">Toxidation2</a>, <a href="http://xproot.pw">xproot</a>
-<p>people who need to sleep:</p>
-<a href="http://floppydisk.aol-files.net/">floppydisk</a>
-<hr>
-<img class=hackerman src="img/hackerman.png"><br><br>
-<script>
-var things = new Array("non-rotatable disk", "side fumbling CPU", "processor", "with multidimension network security access vulnerabilities", "oc6 level optical line", "microprocessor architecture", "server", "minecraft server", "webserver running Linux 0.01", "Linux system", "shell access terminals", "vulnerable networking firewall", "multiphase process memorizer", "x86 IBM level architecture", "network firewall daemon", "network routing device", "insecure Windows server", "Windows server 1985", "transdimensional phasing device");
-
-var actions = new Array("I've hacked into your ", "I'm breaking into the ", "I've hacked the ", "I've gained effective root access to your ", "I'm gaining root access to ", "I've hacked the ", "I broke into the ");
-
-var jargon = actions[(Math.ceil(Math.random() * actions.length) - 1)]
-var length = 5;
-
-for (var i = 0; i <= length; i++) {
-    if (i <= 1) {
-        jargon = jargon + "with ";
-     };
-     jargon = jargon + things[(Math.ceil(Math.random() * things.length) - 1)] + " ";
-};
-
-document.write("<p style=\"display: inline;\">" + jargon + "</p>")
-</script>
-    
-<hr>
-<p><p class=smolgentoo>not </p>Hosted on <b>Gentoo Linux</b></p>
-<a href=https://gentoo.org>
-<img src=img/gentoo.jpeg alt="Totally powered by Gentoo.">
-</a>
-
-</body>
-
+            function FP_getObjectByID(id, o) { //v1.0
+                var c, el, els, f, m, n;
+                if (!o) o = document;
+                if (o.getElementById) el = o.getElementById(id);
+                else if (o.layers) c = o.layers;
+                else if (o.all) el = o.all[id];
+                if (el) return el;
+                if (o.id == id || o.name == id) return o;
+                if (o.childNodes) c = o.childNodes;
+                if (c)
+                    for (n = 0; n < c.length; n++) {
+                        el = FP_getObjectByID(id, c[n]);
+                        if (el) return el;
+                    }
+                f = o.forms;
+                if (f)
+                    for (n = 0; n < f.length; n++) {
+                        els = f[n].elements;
+                        for (m = 0; m < els.length; m++) {
+                            el = FP_getObjectByID(id, els[n]);
+                            if (el) return el;
+                        }
+                    }
+                return null;
+            }
+        </script>
+    </head>
+    <body>
+        <img class=sitetitle src=img/pubsite.gif alt=PubSite>
+        <h1>A website anyone can edit!</h1>
+        <p>Check out the available pages:</p>
+        <a href=pages/whath>
+            <img id="img1" src="button/whath1.jpg" height="20" width="100" alt="WHAT H" fp-style="fp-btn: Embossed Rectangle 2" fp-title="WHAT H" onmouseover="FP_swapImg(1,0,/*id*/'img1',/*url*/'button/whath2.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img1',/*url*/'button/whath1.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img1',/*url*/'button/whath3.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img1',/*url*/'button/whath2.jpg')">
+        </a>
+        <a href="pages/idk">
+            <img border="0" id="img2" src="button/idk3.jpg" height="20" width="100" alt="idk" fp-style="fp-btn: Soft Rectangle 2" fp-title="idk" onmouseover="FP_swapImg(1,0,/*id*/'img2',/*url*/'button/idk1.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img2',/*url*/'button/idk3.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img2',/*url*/'button/idk2.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img2',/*url*/'button/idk1.jpg')">
+        </a>
+        <br>
+        <br>
+		
+        <a class=githublink href="https://github.com/HIDEN64/PubSite">GitHub repo</a>
+		
+        <hr>
+        <p>cool people:</p>
+        <a href="https://hiden.pw/">HIDEN64</a>, <a href="http://www.nick99nack.com/">nick99nack</a>, <a href="http://local.toxi.pw/">Toxidation2</a>, <a href="http://xproot.pw">xproot</a>
+        <p>people who need to sleep:</p>
+        <a href="http://floppydisk.aol-files.net/">floppydisk</a>
+		
+        <hr>
+        <img class=hackerman src="img/hackerman.png">
+        <br>
+        <br>
+		
+        <script>
+            var things = new Array("non-rotatable disk", "side fumbling CPU", "processor", "with multidimension network security access vulnerabilities", "oc6 level optical line", "microprocessor architecture", "server", "minecraft server", "webserver running Linux 0.01", "Linux system", "shell access terminals", "vulnerable networking firewall", "multiphase process memorizer", "x86 IBM level architecture", "network firewall daemon", "network routing device", "insecure Windows server", "Windows server 1985", "transdimensional phasing device");
+            var actions = new Array("I've hacked into your ", "I'm breaking into the ", "I've hacked the ", "I've gained effective root access to your ", "I'm gaining root access to ", "I've hacked the ", "I broke into the ");
+            var jargon = actions[(Math.ceil(Math.random() * actions.length) - 1)]
+            var length = 5;
+            for (var i = 0; i <= length; i++) {
+                if (i <= 1) {
+                    jargon = jargon + "with ";
+                };
+                jargon = jargon + things[(Math.ceil(Math.random() * things.length) - 1)] + " ";
+            };
+            document.write(" < p style = \"display: inline;\">" + jargon + "</p>")
+        </script>
+		
+        <hr>
+        <p>
+        <p class=smolgentoo>not </p>Hosted on <b>Gentoo Linux</b>
+        </p>
+        <a href=https://gentoo.org>
+            <img src=img/gentoo.jpeg alt="Totally powered by Gentoo.">
+        </a>
+    </body>
 </html>
