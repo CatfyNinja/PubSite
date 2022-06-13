@@ -1,25 +1,51 @@
 body {
-    text-align: center;
-    background-image: url("img/background.png");
-    background-size: cover;
-    background-attachment: fixed;
+	text-align: center;
+	background-image: url("img/background.png");
+	background-size: cover;
+	background-attachment: fixed;
 }
 
 .sitetitle {
-    width: 203px; 
-    height: 100px;
+	width: 203px; 
+	height: 100px;
 }
 
 .hackerman {
-    width: 332.5px; 
-    height: 50.5;    
+	width: 332.5px; 
+	height: 50.5;		
 }
 
 .smolgentoo {
-    font-size: 6px; 
-    display: inline;
+	font-size: 6px; 
+	display: inline;
 }
 
 .githublink {
 	font-size: 21.5px;
+}
+
+footer {
+	margin-top: 5px;
+	box-shadow: 0 0 0.6rem 0 rgba(0, 0, 0, .5); 
+	z-index: 1;
+	background: inherit;
+	overflow: hidden;
+	padding: 5px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+footer:before {
+	position: absolute;
+	background: inherit;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+	filter: blur(10px);
+	margin: -20px;
 }
